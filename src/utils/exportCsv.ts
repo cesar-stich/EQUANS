@@ -1,22 +1,35 @@
 import { Suministro } from '../types';
+import { CORTE_CRITICA } from '../data';
 
 const TARIFA_KWH = 0.667;
 
-export const exportToCsv = (data: Suministro[], filename = 'rutas_inspeccion_cuadrillas.csv') => {
-  const headers = ['Ranking', 'Suministro', 'SED', 'Zona', 'Tipo de Hurto (Sospecha)', 'Probabilidad (%)', 'Pérdida Est. (kWh)', 'Recupero Est. (S/.)', 'Score Prioridad', 'Condición de Red'];
-  
-  const rows = data.map((row, index) => [
-    index + 1,
-    row.suministro,
-    row.sed,
-    row.zona,
-    row.tipo,
-    (row.probabilidad * 100).toFixed(1) + '%',
-    (row.recupero_soles / TARIFA_KWH).toFixed(2),
-    row.recupero_soles.toFixed(2),
-    row.score_prioridad.toFixed(0),
-    row.incertidumbre_alta ? 'ALTA INCERTIDUMBRE (Precaución)' : 'NORMAL'
-  ]);
+type ExportRow = Suministro & { globalRank?: number };
+
+export const exportToCsv = (data: ExportRow[], filename = 'rutas_inspeccion_cuadrillas.csv') => {
+  const headers = ['Ranking', 'Zona de Despacho', 'Suministro', 'SED', 'Tipo de Hurto (Sospecha)', 'Nivel de Sospecha', 'Pérdida Est. (kWh)', 'Recupero Est. (S/.)', 'Score Prioridad', 'Acción de Cuadrilla', 'Alerta'];
+
+  const rows = data.map((row, index) => {
+    // Usamos el ranking global del suministro (no la posición dentro de la lista filtrada/visible)
+    // para que la etiqueta de zona de despacho sea correcta incluso al exportar un subconjunto filtrado.
+    const rank = row.globalRank ?? index + 1;
+    const zonaDespacho = rank <= CORTE_CRITICA
+      ? `🔴 Zona Crítica (#1-${CORTE_CRITICA})`
+      : `⚪ No Priorizado (#${CORTE_CRITICA + 1}+)`;
+
+    return [
+      rank,
+      zonaDespacho,
+      row.suministro,
+      row.sed,
+      row.tipo,
+      row.nivel_sospecha,
+      (row.recupero_soles / TARIFA_KWH).toFixed(2),
+      row.recupero_soles.toFixed(2),
+      row.score_prioridad.toFixed(0),
+      row.tipo === 'CLANDESTINA' ? 'REVISAR RED / ACOMETIDA' : 'REVISAR MEDIDOR',
+      row.incertidumbre_alta ? 'DUDOSO (confirmar en campo)' : ''
+    ];
+  });
 
   const csvContent = [
     headers.join(','),
