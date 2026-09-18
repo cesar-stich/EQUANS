@@ -10,7 +10,10 @@ print(f"Cargando {len(df)} suministros del ranking completo...")
 # mismo corte que usa el pipeline para el Excel entregable, leído de la misma variable para
 # que no puedan desincronizarse. Antes se exportaban 1,000 registros de los que se usaban
 # 100, lo que inflaba src/data.ts a 674 KB — peso muerto en la tablet del supervisor.
-corte_operativo = int(os.environ.get('CORTE_OPERATIVO', 100))
+# El corte lo decide el pipeline (corte_autonomo.py), no una constante. Se lee del Excel
+# entregado para que el tablero del jefe de campo muestre exactamente los suministros
+# que recibe el jurado, sin quedar desincronizado cuando N cambia entre corridas.
+corte_operativo = len(pd.read_excel('entregables/sospechosos.xlsx'))
 df_despacho = df.head(corte_operativo).copy()
 
 # Ficha del alimentador para dar contexto en pantalla. Se deriva del dataset crudo en vez de
@@ -52,6 +55,7 @@ def explicacion_para_campo(d):
     caida = float(d.get('caida_pct') or 0)
     fuso = float(d.get('factor_uso') or 0)
     desv = float(d.get('desv_sed') or 0)
+    caida_vs_sed = float(d.get('caida_vs_sed') or 0)
     frases = []
 
     def kw(v):
@@ -91,6 +95,22 @@ def explicacion_para_campo(d):
             )
         elif activos < 10:
             frases.append(f"Solo registra consumo en {activos} de los 12 meses del año.")
+
+    # 1b) El argumento más fuerte para la cuadrilla: la caída de ESTE suministro contra
+    # la caída típica de su propia SED. Separa el hurto individual del efecto de barrio
+    # (si toda la manzana bajó, es estacionalidad o un evento local, no manipulación).
+    if caida_vs_sed >= 0.30:
+        vecinos = caida - caida_vs_sed
+        if vecinos <= 0.05:
+            frases.append(
+                f"Cayó {caida*100:.0f}% mientras el resto de su subestación se mantuvo estable "
+                f"({vecinos*100:+.0f}%): la caída es de este suministro, no del sector."
+            )
+        else:
+            frases.append(
+                f"Cayó {caida*100:.0f}%, muy por encima del {vecinos*100:.0f}% que cayó el "
+                f"resto de su subestación."
+            )
 
     # 2) Comparación con los vecinos del mismo transformador. Cuando el medidor ya está en
     # cero, la comparación se redacta en pasado: decir "registra 123% más que sus vecinos"
