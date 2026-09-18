@@ -1,0 +1,238 @@
+{
+  "n_boot": 200,
+  "n_hurtos_inyectados": 31,
+  "escenarios": {
+    "optimista": {
+      "resumen": [
+        {
+          "K": 10,
+          "recall_medio": 0.115,
+          "recall_p2.5": 0.0,
+          "recall_p97.5": 1.0,
+          "pct_hurtos_detectados": 0.3709677419354839,
+          "precision_pct": 1.15,
+          "precision_techo_pct": 100.0,
+          "lift_vs_azar": 5.5463387096774195
+        },
+        {
+          "K": 20,
+          "recall_medio": 0.485,
+          "recall_p2.5": 0.0,
+          "recall_p97.5": 2.0,
+          "pct_hurtos_detectados": 1.564516129032258,
+          "precision_pct": 2.4250000000000003,
+          "precision_techo_pct": 100.0,
+          "lift_vs_azar": 11.695540322580648
+        },
+        {
+          "K": 31,
+          "recall_medio": 0.61,
+          "recall_p2.5": 0.0,
+          "recall_p97.5": 3.0,
+          "pct_hurtos_detectados": 1.9677419354838708,
+          "precision_pct": 1.9677419354838708,
+          "precision_techo_pct": 100.0,
+          "lift_vs_azar": 9.490228928199791
+        },
+        {
+          "K": 40,
+          "recall_medio": 0.845,
+          "recall_p2.5": 0.0,
+          "recall_p97.5": 3.0,
+          "pct_hurtos_detectados": 2.725806451612903,
+          "precision_pct": 2.1125,
+          "precision_techo_pct": 77.5,
+          "lift_vs_azar": 10.18838306451613
+        },
+        {
+          "K": 50,
+          "recall_medio": 1.07,
+          "recall_p2.5": 0.0,
+          "recall_p97.5": 3.0250000000000057,
+          "pct_hurtos_detectados": 3.4516129032258065,
+          "precision_pct": 2.14,
+          "precision_techo_pct": 62.0,
+          "lift_vs_azar": 10.321012903225808
+        },
+        {
+          "K": 96,
+          "recall_medio": 2.285,
+          "recall_p2.5": 0.0,
+          "recall_p97.5": 6.0,
+          "pct_hurtos_detectados": 7.370967741935484,
+          "precision_pct": 2.3802083333333335,
+          "precision_techo_pct": 32.29166666666667,
+          "lift_vs_azar": 11.479514448924732
+        },
+        {
+          "K": 100,
+          "recall_medio": 2.315,
+          "recall_p2.5": 0.0,
+          "recall_p97.5": 6.0,
+          "pct_hurtos_detectados": 7.467741935483871,
+          "precision_pct": 2.315,
+          "precision_techo_pct": 31.0,
+          "lift_vs_azar": 11.165020967741937
+        },
+        {
+          "K": 150,
+          "recall_medio": 3.21,
+          "recall_p2.5": 0.0,
+          "recall_p97.5": 6.025000000000006,
+          "pct_hurtos_detectados": 10.35483870967742,
+          "precision_pct": 2.1399999999999997,
+          "precision_techo_pct": 20.666666666666668,
+          "lift_vs_azar": 10.321012903225805
+        },
+        {
+          "K": 200,
+          "recall_medio": 4.26,
+          "recall_p2.5": 1.0,
+          "recall_p97.5": 8.0,
+          "pct_hurtos_detectados": 13.741935483870968,
+          "precision_pct": 2.13,
+          "precision_techo_pct": 15.5,
+          "lift_vs_azar": 10.272783870967743
+        },
+        {
+          "K": 300,
+          "recall_medio": 6.575,
+          "recall_p2.5": 3.0,
+          "recall_p97.5": 11.0,
+          "pct_hurtos_detectados": 21.20967741935484,
+          "precision_pct": 2.191666666666667,
+          "precision_techo_pct": 10.333333333333334,
+          "lift_vs_azar": 10.570196236559141
+        },
+        {
+          "K": 500,
+          "recall_medio": 8.99,
+          "recall_p2.5": 5.0,
+          "recall_p97.5": 13.0,
+          "pct_hurtos_detectados": 28.999999999999996,
+          "precision_pct": 1.798,
+          "precision_techo_pct": 6.2,
+          "lift_vs_azar": 8.67158
+        }
+      ],
+      "mediana_posicion": 1454.0,
+      "excluidos_medio": 2.15
+    },
+    "conservador": {
+      "resumen": [
+        {
+          "K": 10,
+          "recall_medio": 0.03,
+          "recall_p2.5": 0.0,
+          "recall_p97.5": 1.0,
+          "pct_hurtos_detectados": 0.0967741935483871,
+          "precision_pct": 0.3,
+          "precision_techo_pct": 100.0,
+          "lift_vs_azar": 1.4468709677419356
+        },
+        {
+          "K": 20,
+          "recall_medio": 0.15,
+          "recall_p2.5": 0.0,
+          "recall_p97.5": 1.0,
+          "pct_hurtos_detectados": 0.4838709677419355,
+          "precision_pct": 0.75,
+          "precision_techo_pct": 100.0,
+          "lift_vs_azar": 3.617177419354839
+        },
+        {
+          "K": 31,
+          "recall_medio": 0.17,
+          "recall_p2.5": 0.0,
+          "recall_p97.5": 1.0,
+          "pct_hurtos_detectados": 0.5483870967741936,
+          "precision_pct": 0.5483870967741936,
+          "precision_techo_pct": 100.0,
+          "lift_vs_azar": 2.644817898022893
+        },
+        {
+          "K": 40,
+          "recall_medio": 0.2,
+          "recall_p2.5": 0.0,
+          "recall_p97.5": 1.0,
+          "pct_hurtos_detectados": 0.6451612903225806,
+          "precision_pct": 0.5,
+          "precision_techo_pct": 77.5,
+          "lift_vs_azar": 2.411451612903226
+        },
+        {
+          "K": 50,
+          "recall_medio": 0.27,
+          "recall_p2.5": 0.0,
+          "recall_p97.5": 1.0,
+          "pct_hurtos_detectados": 0.870967741935484,
+          "precision_pct": 0.54,
+          "precision_techo_pct": 62.0,
+          "lift_vs_azar": 2.604367741935484
+        },
+        {
+          "K": 96,
+          "recall_medio": 0.7,
+          "recall_p2.5": 0.0,
+          "recall_p97.5": 3.0,
+          "pct_hurtos_detectados": 2.258064516129032,
+          "precision_pct": 0.7291666666666666,
+          "precision_techo_pct": 32.29166666666667,
+          "lift_vs_azar": 3.516700268817204
+        },
+        {
+          "K": 100,
+          "recall_medio": 0.71,
+          "recall_p2.5": 0.0,
+          "recall_p97.5": 3.0,
+          "pct_hurtos_detectados": 2.2903225806451615,
+          "precision_pct": 0.71,
+          "precision_techo_pct": 31.0,
+          "lift_vs_azar": 3.4242612903225806
+        },
+        {
+          "K": 150,
+          "recall_medio": 1.195,
+          "recall_p2.5": 0.0,
+          "recall_p97.5": 4.0,
+          "pct_hurtos_detectados": 3.8548387096774195,
+          "precision_pct": 0.7966666666666667,
+          "precision_techo_pct": 20.666666666666668,
+          "lift_vs_azar": 3.8422462365591405
+        },
+        {
+          "K": 200,
+          "recall_medio": 1.545,
+          "recall_p2.5": 0.0,
+          "recall_p97.5": 5.0,
+          "pct_hurtos_detectados": 4.983870967741935,
+          "precision_pct": 0.7725,
+          "precision_techo_pct": 15.5,
+          "lift_vs_azar": 3.725692741935484
+        },
+        {
+          "K": 300,
+          "recall_medio": 2.2,
+          "recall_p2.5": 0.0,
+          "recall_p97.5": 5.025000000000006,
+          "pct_hurtos_detectados": 7.096774193548387,
+          "precision_pct": 0.7333333333333334,
+          "precision_techo_pct": 10.333333333333334,
+          "lift_vs_azar": 3.5367956989247316
+        },
+        {
+          "K": 500,
+          "recall_medio": 3.01,
+          "recall_p2.5": 0.0,
+          "recall_p97.5": 7.025000000000006,
+          "pct_hurtos_detectados": 9.709677419354838,
+          "precision_pct": 0.602,
+          "precision_techo_pct": 6.2,
+          "lift_vs_azar": 2.903387741935484
+        }
+      ],
+      "mediana_posicion": 3555.5,
+      "excluidos_medio": 2.075
+    }
+  }
+}

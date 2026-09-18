@@ -9,7 +9,11 @@ from reportlab.lib import colors
 # pipeline se vuelve a correr con otros parámetros, el entregable no puede quedar
 # afirmando números de una corrida anterior.
 TARIFA_REF_SOLES = 0.667
-CORTE_OPERATIVO = int(os.environ.get('CORTE_OPERATIVO', 100))
+# El corte ya no es una constante: lo decide el pipeline por maxima concentracion de
+# evidencia (ver corte_autonomo.py) y puede cambiar entre corridas. Se lee del Excel
+# entregado, que es la fuente de verdad de lo que efectivamente se entrego, para que el
+# PDF nunca afirme un N distinto al del archivo que recibe el jurado.
+CORTE_OPERATIVO = len(pd.read_excel('entregables/sospechosos.xlsx'))
 
 _rank = pd.read_csv('entregables/ranking_completo.csv')
 _top = _rank.head(CORTE_OPERATIVO)
