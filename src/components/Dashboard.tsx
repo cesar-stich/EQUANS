@@ -173,7 +173,7 @@ export default function Dashboard() {
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h1 className="text-xl font-bold tracking-tight text-slate-950">Despacho de Inspecciones Técnicas</h1>
+                <h1 className="text-xl font-bold tracking-tight text-slate-950">WattCheck</h1>
                 <span className="px-2 py-0.5 rounded text-[10px] font-extrabold bg-emerald-100 text-emerald-900 border border-emerald-300">FASE 1</span>
               </div>
               <p className="text-xs text-slate-500 font-medium">Panel de Priorización de Pérdidas No Técnicas (PNT) — EQUANS Perú</p>
